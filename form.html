@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CleanFresh Laundry</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <h1>CleanFresh Laundry</h1>
+  </header>
+
+  <main>
+    <!-- Beranda -->
+    <section id="home" class="section">
+      <div class="container">
+        <h2>Selamat Datang di CleanFresh Laundry</h2>
+        <p>Kami menyediakan layanan laundry cepat, bersih, dan terpercaya. Nikmati layanan antar jemput langsung ke rumah Anda!</p>
+      </div>
+    </section>
+
+
+    <!-- Form Pemesanan -->
+    <section id="order" class="section">
+      <div class="container">
+        <h2>Form Pemesanan Laundry</h2>
+        <form id="laundryForm">
+          <label for="nama">Nama:</label>
+          <input type="text" id="nama" name="nama" required>
+
+          <label for="nomor">Nomor WhatsApp Anda:</label>
+          <input type="tel" id="nomor" name="nomor" required>
+
+          <label for="layanan">Layanan:</label>
+          <select id="layanan" name="layanan" required>
+            <option value="Laundry Kiloan">Laundry Kiloan</option>
+            <option value="Antar Jemput">Antar Jemput</option>
+            <option value="Dry Cleaning">Dry Cleaning</option>
+          </select>
+
+          <label for="alamat">Alamat:</label>
+          <textarea id="alamat" name="alamat" rows="3" required></textarea>
+
+          <label for="catatan">Catatan Tambahan:</label>
+          <textarea id="catatan" name="catatan" rows="2"></textarea>
+
+          <button type="submit" class="btn">Kirim ke WhatsApp</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Kontak -->
+    <section id="kontak" class="section">
+      <div class="container">
+        <h2>Hubungi Kami</h2>
+        <p>📍 Alamat: Jl. Contoh Raya No.1, Jakarta</p>
+        <p>📞 WhatsApp Admin: <strong>0813-5120-6762</strong></p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 CleanFresh Laundry. Semua hak dilindungi.</p>
+  </footer>
+
+  <!-- Script WhatsApp -->
+  <script>
+    document.getElementById('laundryForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const nama = document.getElementById('nama').value;
+      const nomor = document.getElementById('nomor').value;
+      const layanan = document.getElementById('layanan').value;
+      const alamat = document.getElementById('alamat').value;
+      const catatan = document.getElementById('catatan').value;
+
+      const adminPhone = '6281351206762';
+      const message = `Halo Admin CleanFresh Laundry, saya ingin melakukan pemesanan:\n\nNama: ${nama}\nNo. WA: ${nomor}\nLayanan: ${layanan}\nAlamat: ${alamat}\nCatatan: ${catatan}`;
+
+      const encodedMessage = encodeURIComponent(message);
+      const whatsappURL = `https://wa.me/${adminPhone}?text=${encodedMessage}`;
+
+      window.open(whatsappURL, '_blank');
+    });
+  </script>
+
+</body>
+</html>
